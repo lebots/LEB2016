@@ -18,19 +18,12 @@
 #pragma userControlDuration(115)
 #include "Vex_Competition_Includes.c"
 
-// SmartMotorLib
-//#include ".\lib\SmartMotorLib.c"
-
-// Include personal util files
-//#include ".\util\shooter.c"
-
+// Include auton files
+#include ".\auton\auton1.h"
 
 bool shooterBool = false;
 int shootSpeed = 0;
 float driveMultiplier = 1;
-long avgBatValue;
-long backupBatValue;
-long expBat;
 float shotMultiplier;
 long finalSpeed;
 
@@ -40,13 +33,13 @@ void pre_auton() {
 }
 
 task autonomous() {
-
+	auton1();
 }
 
 task usercontrol()
 {
 	while (true) { // Btn6U = slow, Btn5U = super slow
-	driveMultiplier = vexRT[Btn6U] ? 0.4 : (vexRT[Btn5U] ? 0.25 : 1);
+		driveMultiplier = vexRT[Btn6U] ? 0.4 : (vexRT[Btn5U] ? 0.25 : 1);
 
 		motor[flMotor] = driveMultiplier * vexRT[Ch3];
 		motor[blMotor] = driveMultiplier * vexRT[Ch3];
@@ -95,9 +88,10 @@ task usercontrol()
 		motor[liftMotor] = 127 * (vexRT[Btn5UXmtr2] - vexRT[Btn5DXmtr2]);
 		motor[intakeMotor] = 127 * (vexRT[Btn6DXmtr2] - vexRT[Btn6UXmtr2]);
 
+		// Piston to keep balls from flywheels
 		if (vexRT[Btn7RXmtr2] || vexRT[Btn8LXmtr2]) {
 			SensorValue(piston) = 1;
-		} else {
+			} else {
 			SensorValue(piston) = 0;
 		}
 
