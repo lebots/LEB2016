@@ -48,7 +48,7 @@ task usercontrol()
 
 		if (vexRT[Btn7LXmtr2]) { // Full court
 			shooterBool = true;
-			shotMultiplier = 0.54;
+			shotMultiplier = 0.57;
 		}
 		if (vexRT[Btn8RXmtr2]) { // 3/4 court
 			shooterBool = true;
@@ -56,11 +56,11 @@ task usercontrol()
 		}
 		if (vexRT[Btn7UXmtr2]) { // Half court
 			shooterBool = true;
-			shotMultiplier = 0.4;\
+			shotMultiplier = 0.35;
 		}
 		if (vexRT[Btn8UXmtr2]) { // Quarter court
 			shooterBool = true;
-			shotMultiplier = 0.35;
+			shotMultiplier = 0.33;
 		}
 		if (vexRT[Btn7DXmtr2] || vexRT[Btn8DXmtr2]) // Stop flywheels
 			shooterBool = false;
