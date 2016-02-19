@@ -7,7 +7,7 @@ void auton1()
 	motor[launcherL2] = 72;
 	motor[launcherR1] = 72;
 	motor[launcherR2] = 72;
-	wait1Msec(3000);
+	wait1Msec(1500);
 
 	motor[intakeMotor] = 50;
 	motor[liftMotor] = -50;
