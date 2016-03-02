@@ -28,6 +28,10 @@ float driveMultiplier = 1;
 float shotMultiplier;
 long finalSpeed;
 
+float fullCourtSpeed = 0.58;
+float midCourtSpeed = 0.475;
+float closeSpeed = 0.34;
+
 void pre_auton() {
 
 }
@@ -48,19 +52,15 @@ task usercontrol()
 
 		if (vexRT[Btn7LXmtr2]) { // Full court
 			shooterBool = true;
-			shotMultiplier = 0.58;
+			shotMultiplier = fullCourtSpeed;
 		}
 		if (vexRT[Btn8RXmtr2]) { // 3/4 court
 			shooterBool = true;
-			shotMultiplier = 0.475;
+			shotMultiplier = midCourtSpeed;
 		}
-		if (vexRT[Btn7UXmtr2]) { // Half court
+		if (vexRT[Btn8UXmtr2] || vexRT[Btn7UXmtr2]) { // Quarter court
 			shooterBool = true;
-			shotMultiplier = 0.35;
-		}
-		if (vexRT[Btn8UXmtr2]) { // Quarter court
-			shooterBool = true;
-			shotMultiplier = 0.33;
+			shotMultiplier = closeSpeed;
 		}
 		if (vexRT[Btn7DXmtr2] || vexRT[Btn8DXmtr2]) // Stop flywheels
 			shooterBool = false;
@@ -80,8 +80,13 @@ task usercontrol()
 			clearTimer(timer1);
 
 		// Ramp up speed once ball goes through flywheels
-		if (time1[timer1] >= 250 && time1[timer1] < 750)
+		if (time1[timer1] >= 250 && time1[timer1] < 750 && shotMultiplier == fullCourtSpeed)
 			finalSpeed = shooterBool * shootSpeed * shotMultiplier * 1.1;
+			//finalSpeed = 127;
+		else if (time1[timer1] >= 100 && time1[timer1] < 600 && shotMultiplier == midCourtSpeed)
+			finalSpeed = shooterBool * shootSpeed * shotMultiplier * 1.5;
+		else if (time1[timer1] >= 100 && time1[timer1] < 600 && shotMultiplier == closeSpeed)
+			finalSpeed = shooterBool * shootSpeed * shotMultiplier * 1.5;
 		else
 			finalSpeed = shooterBool * shootSpeed * shotMultiplier;
 
