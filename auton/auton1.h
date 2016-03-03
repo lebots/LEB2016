@@ -3,10 +3,10 @@
 
 void auton1()
 {
-	motor[launcherL1] = 80;
-	motor[launcherL2] = 80;
-	motor[launcherR1] = 80;
-	motor[launcherR2] = 80;
+	motor[launcherL1] = 75;
+	motor[launcherL2] = 75;
+	motor[launcherR1] = 75;
+	motor[launcherR2] = 75;
 	wait1Msec(1500);
 
 	motor[intakeMotor] = 50;

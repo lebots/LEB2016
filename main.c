@@ -29,7 +29,7 @@ float shotMultiplier;
 long finalSpeed;
 
 float fullCourtSpeed = 0.58;
-float midCourtSpeed = 0.475;
+float midCourtSpeed = 0.375;
 float closeSpeed = 0.34;
 
 void pre_auton() {
@@ -84,9 +84,9 @@ task usercontrol()
 			finalSpeed = shooterBool * shootSpeed * shotMultiplier * 1.1;
 			//finalSpeed = 127;
 		else if (time1[timer1] >= 100 && time1[timer1] < 600 && shotMultiplier == midCourtSpeed)
-			finalSpeed = shooterBool * shootSpeed * shotMultiplier * 1.5;
+			finalSpeed = shooterBool * shootSpeed * shotMultiplier * 1.50;
 		else if (time1[timer1] >= 100 && time1[timer1] < 600 && shotMultiplier == closeSpeed)
-			finalSpeed = shooterBool * shootSpeed * shotMultiplier * 1.5;
+			finalSpeed = shooterBool * shootSpeed * shotMultiplier * 1.45;
 		else
 			finalSpeed = shooterBool * shootSpeed * shotMultiplier;
 
