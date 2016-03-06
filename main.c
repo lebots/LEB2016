@@ -28,9 +28,9 @@ float driveMultiplier = 1;
 float shotMultiplier;
 long finalSpeed;
 
-float fullCourtSpeed = 0.58;
-float midCourtSpeed = 0.375;
-float closeSpeed = 0.34;
+float fullCourtSpeed = 0.59;
+float midCourtSpeed = 0.38;
+float closeSpeed = 0.35;
 
 void pre_auton() {
 
@@ -81,7 +81,7 @@ task usercontrol()
 
 		// Ramp up speed once ball goes through flywheels
 		if (time1[timer1] >= 250 && time1[timer1] < 750 && shotMultiplier == fullCourtSpeed)
-			finalSpeed = shooterBool * shootSpeed * shotMultiplier * 1.1;
+			finalSpeed = shooterBool * shootSpeed * shotMultiplier * 1.125;
 			//finalSpeed = 127;
 		else if (time1[timer1] >= 100 && time1[timer1] < 600 && shotMultiplier == midCourtSpeed)
 			finalSpeed = shooterBool * shootSpeed * shotMultiplier * 1.50;
